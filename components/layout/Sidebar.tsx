@@ -12,7 +12,8 @@ import {
   Settings,
   PenTool,
   MessageSquare,
-  BarChart3
+  BarChart3,
+  Bot
 } from 'lucide-react'
 import { useUIStore } from '@/lib/store'
 
@@ -31,6 +32,7 @@ const navItems: NavItem[] = [
   { label: 'Insights', href: '/insights', icon: BarChart3 },
   { label: 'Voice Settings', href: '/voice', icon: Mic2 },
   { label: 'Prompt Lab', href: '/prompts', icon: Sparkles },
+  { label: 'Automations', href: '/automations', icon: Bot },
   { label: 'Settings', href: '/settings', icon: Settings },
 ]
 

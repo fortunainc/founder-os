@@ -534,6 +534,138 @@ export interface Database {
         }
         Relationships: []
       }
+      automations: {
+        Row: {
+          id: string
+          name: string
+          description: string
+          enabled: boolean
+          schedule: string
+          last_run: string | null
+          next_run: string | null
+          status: string
+          config: Json
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description: string
+          enabled?: boolean
+          schedule: string
+          last_run?: string | null
+          next_run?: string | null
+          status?: string
+          config?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string
+          enabled?: boolean
+          schedule?: string
+          last_run?: string | null
+          next_run?: string | null
+          status?: string
+          config?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      automation_runs: {
+        Row: {
+          id: string
+          automation_id: string
+          status: string
+          started_at: string
+          completed_at: string | null
+          outputs: Json
+          errors: string[]
+          result_summary: string | null
+        }
+        Insert: {
+          id?: string
+          automation_id: string
+          status?: string
+          started_at?: string
+          completed_at?: string | null
+          outputs?: Json
+          errors?: string[]
+          result_summary?: string | null
+        }
+        Update: {
+          id?: string
+          automation_id?: string
+          status?: string
+          started_at?: string
+          completed_at?: string | null
+          outputs?: Json
+          errors?: string[]
+          result_summary?: string | null
+        }
+        Relationships: []
+      }
+      automation_logs: {
+        Row: {
+          id: string
+          automation_run_id: string
+          level: string
+          message: string
+          metadata: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          automation_run_id: string
+          level: string
+          message: string
+          metadata?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          automation_run_id?: string
+          level?: string
+          message?: string
+          metadata?: Json | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          id: string
+          type: string
+          title: string
+          message: string
+          read: boolean
+          action_url: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          type: string
+          title: string
+          message: string
+          read?: boolean
+          action_url?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          type?: string
+          title?: string
+          message?: string
+          read?: boolean
+          action_url?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -608,3 +740,7 @@ export type DailyLog = Database['public']['Tables']['daily_logs']['Row']
 export type VoiceProfile = Database['public']['Tables']['voice_profiles']['Row']
 export type PromptTemplate = Database['public']['Tables']['prompt_templates']['Row']
 export type ActivityLog = Database['public']['Tables']['activity_logs']['Row']
+export type Automation = Database['public']['Tables']['automations']['Row']
+export type AutomationRun = Database['public']['Tables']['automation_runs']['Row']
+export type AutomationLog = Database['public']['Tables']['automation_logs']['Row']
+export type Notification = Database['public']['Tables']['notifications']['Row']
