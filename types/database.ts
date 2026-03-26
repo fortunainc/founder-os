@@ -666,6 +666,42 @@ export interface Database {
         }
         Relationships: []
       }
+      ai_usage_logs: {
+        Row: {
+          id: string
+          user_id: string
+          feature: string
+          model_used: string
+          input_tokens: number
+          output_tokens: number
+          total_tokens: number
+          cost: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          feature: string
+          model_used: string
+          input_tokens?: number
+          output_tokens?: number
+          total_tokens?: number
+          cost?: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          feature?: string
+          model_used?: string
+          input_tokens?: number
+          output_tokens?: number
+          total_tokens?: number
+          cost?: number
+          created_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -744,3 +780,4 @@ export type Automation = Database['public']['Tables']['automations']['Row']
 export type AutomationRun = Database['public']['Tables']['automation_runs']['Row']
 export type AutomationLog = Database['public']['Tables']['automation_logs']['Row']
 export type Notification = Database['public']['Tables']['notifications']['Row']
+export type AIUsageLog = Database['public']['Tables']['ai_usage_logs']['Row']

@@ -569,3 +569,34 @@ INSERT INTO public.prompt_templates (name, category, prompt_text) VALUES
   'Generate a personalized follow-up message for this contact. Include context from our previous interaction. Keep it brief, valuable, and action-oriented. No fluff.'
 )
 ON CONFLICT (name) DO NOTHING;
+-- AI Usage Logs Table
+CREATE TABLE IF NOT EXISTS ai_usage_logs (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  feature VARCHAR(100) NOT NULL,
+  model_used VARCHAR(100) NOT NULL,
+  input_tokens INTEGER DEFAULT 0,
+  output_tokens INTEGER DEFAULT 0,
+  total_tokens INTEGER DEFAULT 0,
+  cost DECIMAL(10, 4) DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
+);
+
+-- Indexes for AI Usage Logs
+CREATE INDEX IF NOT EXISTS idx_ai_usage_logs_user_id ON ai_usage_logs(user_id);
+CREATE INDEX IF NOT EXISTS idx_ai_usage_logs_feature ON ai_usage_logs(feature);
+CREATE INDEX IF NOT EXISTS idx_ai_usage_logs_created_at ON ai_usage_logs(created_at DESC);
+
+-- Row Level Security for AI Usage Logs
+ALTER TABLE ai_usage_logs ENABLE ROW LEVEL SECURITY;
+
+-- RLS Policies for AI Usage Logs
+CREATE POLICY "Users can view their own AI usage logs"
+  ON ai_usage_logs
+  FOR SELECT
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can insert their own AI usage logs"
+  ON ai_usage_logs
+  FOR INSERT
+  WITH CHECK (auth.uid() = user_id);

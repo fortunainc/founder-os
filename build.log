@@ -1,0 +1,64 @@
+
+> founder-os@0.1.0 build
+> next build
+
+▲ Next.js 16.1.7 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.2s
+  Running TypeScript ...
+  Collecting page data using 1 worker ...
+Error: supabaseUrl is required.
+    at r (.next/server/chunks/[root-of-the-server]__10746c19._.js:1:1072)
+    at <instance_members_initializer> (.next/server/chunks/[root-of-the-server]__9e96a661._.js:1:455)
+    at new S (.next/server/chunks/[root-of-the-server]__9e96a661._.js:1:420)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__9e96a661._.js:1:6699)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:740:9)
+    at instantiateRuntimeModule (.next/server/chunks/[turbopack]_runtime.js:768:12)
+    at getOrInstantiateRuntimeModule (.next/server/chunks/[turbopack]_runtime.js:781:12)
+Error: supabaseUrl is required.
+    at r (.next/server/chunks/[root-of-the-server]__10746c19._.js:1:1072)
+    at <instance_members_initializer> (.next/server/chunks/[root-of-the-server]__9e96a661._.js:1:6754)
+    at new E (.next/server/chunks/[root-of-the-server]__9e96a661._.js:1:6705)
+    at module evaluation (.next/server/chunks/[root-of-the-server]__9e96a661._.js:1:8355)
+    at instantiateModule (.next/server/chunks/[turbopack]_runtime.js:740:9)
+    at instantiateRuntimeModule (.next/server/chunks/[turbopack]_runtime.js:768:12)
+    at getOrInstantiateRuntimeModule (.next/server/chunks/[turbopack]_runtime.js:781:12)
+  Generating static pages using 1 worker (0/25) ...
+  Generating static pages using 1 worker (6/25) 
+  Generating static pages using 1 worker (12/25) 
+  Generating static pages using 1 worker (18/25) 
+✓ Generating static pages using 1 worker (25/25) in 476.0ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/ai/comments/replies
+├ ƒ /api/ai/content/generate
+├ ƒ /api/ai/content/improve
+├ ƒ /api/ai/insights/analyze
+├ ƒ /api/ai/leads/score
+├ ƒ /api/ai/priorities/generate
+├ ƒ /api/automations
+├ ƒ /api/automations/[id]/logs
+├ ƒ /api/automations/[id]/runs
+├ ○ /automations
+├ ○ /content
+├ ○ /content/calendar
+├ ○ /content/drafts
+├ ○ /content/ideas
+├ ○ /content/performance
+├ ○ /dashboard
+├ ○ /engagement
+├ ○ /insights
+├ ○ /prompts
+├ ○ /revenue
+├ ○ /settings
+├ ○ /today
+└ ○ /voice
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
